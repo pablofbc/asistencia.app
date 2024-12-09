@@ -1,5 +1,5 @@
 import { Camera, CameraView } from "expo-camera";
-import { Stack } from "expo-router";
+import { Stack, useRouter } from "expo-router";
 import {
   AppState,
   Linking,
@@ -14,6 +14,7 @@ import { useEffect, useRef } from "react";
 export default function Scanner() {
   const qrLock = useRef(false);
   const appState = useRef(AppState.currentState);
+  const router = useRouter(); // Router para redirigir con datos
 
   useEffect(() => {
     const subscription = AppState.addEventListener("change", (nextAppState) => {
@@ -47,7 +48,9 @@ export default function Scanner() {
           if (data && !qrLock.current) {
             qrLock.current = true;
             setTimeout(async () => {
-              await Linking.openURL(data);
+              // await Linking.openURL(data);
+              // Regresa con el QR escaneado
+              router.push({ pathname: "/", params: { scannedData: data } });
             }, 500);
           }
         }}

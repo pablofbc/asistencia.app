@@ -9,7 +9,9 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^2.1.0",
     "@shopify/react-native-skia": "^1.6.0",
+    "axios": "^1.7.9",
     "expo": "~52.0.11",
     "expo-camera": "~16.0.8",
     "expo-router": "~4.0.11",
