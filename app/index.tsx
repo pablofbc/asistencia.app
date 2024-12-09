@@ -1,9 +1,10 @@
-import { View, Text, SafeAreaView, Pressable, TouchableOpacity, Alert, StatusBar, Image, Platform } from "react-native";
+import { View, Text, SafeAreaView, TouchableOpacity, Alert, StatusBar, Image, Platform} from "react-native";
 import { Link, useLocalSearchParams } from "expo-router";
-//import { useCameraPermissions } from "expo-camera";
 import { fetchSheetData, updateSheet, readCell} from '../app/utils/googleSheetUtils';
 import React, { useEffect, useState } from "react";
-//import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Button, Icon } from "react-native-paper";
+import { white } from "react-native-paper/lib/typescript/styles/themes/v2/colors";
+
 
 export default function App() {
   //const [permission, requestPermission] = useCameraPermissions();
@@ -104,7 +105,11 @@ export default function App() {
   return (
     <SafeAreaView className='flex-1 h-full bg-[#828aa1]'>   
     <StatusBar className={Platform.OS=='android' ? "bg-[#828aa1] text-light": "bg-[#B4CEED] text-dark"} /> 
-     <View className='bg-[#4b68b0] items-center py-4 m-4 rounded-xl'>       
+     <View className='flex-row bg-[#4b68b0] justify-center py-4 m-4 rounded-xl'>  
+         <Icon
+              source="file-document-edit-outline"
+              size={25} color="#f8f4ef"
+            />     
          <Text className='text-[#f8f4ef] font-semibold text-2xl'>
            ASISTENCIA
          </Text>            
@@ -152,13 +157,27 @@ export default function App() {
         </Link>
       </View>     
       <View className='flex-row justify-center gap-10  bg-[#828aa1] px-3 py-1 mb-4'>
-      <Link href={"/login"} asChild>
-        <TouchableOpacity className='bg-[#4b68b0] w-44 h-12 rounded-md justify-center border-2 border-[#f8f4ef]'>
-          <Text className="text-[#f8f4ef] text-xl text-center">Login</Text>
-        </TouchableOpacity> 
-      </Link>
-        <TouchableOpacity className='bg-[#4b68b0] w-44 h-12 rounded-md justify-center border-2 border-[#f8f4ef]'>
-          <Text className="text-[#f8f4ef] text-xl text-center">Consulta</Text>
+        <Link href={"/login"} asChild>
+          {/* <TouchableOpacity className='bg-[#4b68b0] w-44 h-12 rounded-md justify-center border-2 border-[#f8f4ef]'>
+            <Text className="text-[#f8f4ef] text-xl text-center">Login</Text>
+          </TouchableOpacity>  */}
+          {/* <Button icon="account" mode="contained" buttonColor="#4b68b0" textColor="#f8f4ef">
+            Login
+          </Button> */}
+          <TouchableOpacity className='flex-row justify-center pt-1.5 bg-[#4b68b0] w-44 h-12 rounded-md border-2 border-[#f8f4ef]'>
+          <Icon
+              source="account"
+              size={25} color="#f8f4ef"
+            />
+          <Text className="text-[#f8f4ef] text-xl text-center ml-2">Cuenta</Text>
+        </TouchableOpacity>
+        </Link>
+        <TouchableOpacity className='flex-row justify-center pt-1.5 bg-[#4b68b0] w-44 h-12 rounded-md border-2 border-[#f8f4ef]'>
+          <Icon
+              source="file-document-edit-outline"
+              size={25} color="#f8f4ef"
+            />
+          <Text className="text-[#f8f4ef] text-xl text-center ml-2">Consulta</Text>
         </TouchableOpacity>
       </View>
    </SafeAreaView>
